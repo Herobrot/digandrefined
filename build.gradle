@@ -165,12 +165,12 @@ if (providers.gradleProperty('build.release').isPresent()) {
         curseforge {
             accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
             projectId = curseforge_id
+            projectSlug = project_slug
             minecraftVersions.add(minecraft_version)
             javaVersions.add(JavaVersion.VERSION_21)
             client = true
             server = true
             requires("cloth-config")
-            requires("heros-lib")
             changelogType = "markdown"
             displayName = "${modName} ${modVersion}"
             version = modVersion
@@ -180,7 +180,6 @@ if (providers.gradleProperty('build.release').isPresent()) {
             projectId = modrinth_id
             minecraftVersions.add(minecraft_version)
             requires("cloth-config")
-            requires("heros-lib")
             environment = CLIENT_AND_SERVER
             displayName = "${modName} ${modVersion}"
             version = modVersion
