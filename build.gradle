@@ -20,7 +20,7 @@ group = mod_group_id
 
 sourceSets.main.resources {
     srcDir('src/generated/resources')
-    exclude("src/generated/**/.cache")
+    exclude("**/.cache/**")
 }
 
 repositories {
@@ -55,6 +55,11 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
+        clientWithData {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
         server {
             server()
             programArgument '--nogui'
@@ -82,6 +87,17 @@ neoForge {
             sourceSet(sourceSets.main)
         }
     }
+}
+
+def syncGenerated = tasks.register('syncGeneratedResources', Copy) {
+    from 'src/generated/resources'
+    into layout.buildDirectory.dir('resources/main')
+    exclude '**/.cache/**'
+    mustRunAfter 'runData'
+}
+
+tasks.matching { it.name == 'runClientWithData' }.configureEach {
+    dependsOn 'runData', syncGenerated
 }
 
 configurations {

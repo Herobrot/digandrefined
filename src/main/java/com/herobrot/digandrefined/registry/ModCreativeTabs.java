@@ -18,6 +18,6 @@ public class ModCreativeTabs {
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup." + DigandRefined.MODID))
                     .icon(() -> new ItemStack(Items.IRON_INGOT))
-                    .displayItems((params, output) -> output.accept(Items.IRON_INGOT))
+                    .displayItems((params, output) -> ModItems.ITEMS.getEntries().forEach(entry -> output.accept(entry.get())))
                     .build());
 }
