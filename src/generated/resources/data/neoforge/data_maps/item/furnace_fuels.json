@@ -1,0 +1,10 @@
+{
+  "values": {
+    "digandrefined:impure_coal": {
+      "burn_time": 1200
+    },
+    "digandrefined:pure_coal": {
+      "burn_time": 2400
+    }
+  }
+}

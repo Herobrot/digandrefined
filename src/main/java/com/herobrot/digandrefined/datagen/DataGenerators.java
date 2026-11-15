@@ -9,5 +9,9 @@ public class DataGenerators {
         event.getGenerator().addProvider(event.includeClient(), new ModItemModelProvider(output, event.getExistingFileHelper()));
         event.getGenerator().addProvider(event.includeClient(), new ModLanguageProvider(output, "en_us"));
         event.getGenerator().addProvider(event.includeClient(), new ModLanguageProvider(output, "es_es"));
+
+        event.getGenerator().addProvider(event.includeServer(), new ModItemTagsProvider(output, event.getLookupProvider(), event.getExistingFileHelper()));
+        event.getGenerator().addProvider(event.includeServer(), new ModRecipeProvider(output, event.getLookupProvider()));
+        event.getGenerator().addProvider(event.includeServer(), new ModDataMapProvider(output, event.getLookupProvider()));
     }
 }

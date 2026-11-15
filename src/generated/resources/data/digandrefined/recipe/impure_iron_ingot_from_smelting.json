@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.525,
+  "ingredient": {
+    "item": "digandrefined:impure_raw_iron"
+  },
+  "result": {
+    "count": 1,
+    "id": "digandrefined:impure_iron_ingot"
+  }
+}

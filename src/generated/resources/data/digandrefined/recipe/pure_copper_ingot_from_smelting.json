@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.05,
+  "ingredient": {
+    "item": "digandrefined:pure_raw_copper"
+  },
+  "result": {
+    "count": 1,
+    "id": "digandrefined:pure_copper_ingot"
+  }
+}
