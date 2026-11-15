@@ -24,6 +24,7 @@ sourceSets.main.resources {
 }
 
 repositories {
+    maven { url = "https://maven.shedaniel.me/" }
     mavenCentral()
     flatDir(
             dirs: 'libs'
@@ -88,6 +89,7 @@ configurations {
 }
 
 dependencies {
+        implementation("me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}")
 }
 
 tasks.named('processResources', ProcessResources) {
