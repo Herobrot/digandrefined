@@ -1,5 +1,8 @@
 package com.herobrot.digandrefined;
 
+import com.herobrot.digandrefined.datagen.DataGenerators;
+import com.herobrot.digandrefined.registry.ModCreativeTabs;
+import com.herobrot.digandrefined.registry.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -14,5 +17,8 @@ public class DigandRefined {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public DigandRefined(IEventBus modEventBus, ModContainer modContainer) {
+        ModItems.ITEMS.register(modEventBus);
+        ModCreativeTabs.TABS.register(modEventBus);
+        modEventBus.addListener(DataGenerators::gatherData);
     }
 }
