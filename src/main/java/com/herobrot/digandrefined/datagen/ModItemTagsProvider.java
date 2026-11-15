@@ -10,6 +10,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,5 +41,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ModTags.IMPURE_DIAMOND).add(ModItems.IMPURE_DIAMOND.get());
         tag(ModTags.PURE_DIAMOND).add(ModItems.PURE_DIAMOND.get());
+
+        tag(ItemTags.PICKAXES)
+                .add(ModItems.IMPURE_IRON_PICKAXE.get())
+                .add(ModItems.PURE_IRON_PICKAXE.get())
+                .add(ModItems.IMPURE_GOLD_PICKAXE.get())
+                .add(ModItems.PURE_GOLD_PICKAXE.get())
+                .add(ModItems.IMPURE_DIAMOND_PICKAXE.get())
+                .add(ModItems.PURE_DIAMOND_PICKAXE.get());
     }
 }

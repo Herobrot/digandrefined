@@ -5,6 +5,7 @@ import com.herobrot.digandrefined.registry.ModItems;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.TieredItem;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -18,7 +19,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         ModItems.ITEMS.getEntries().forEach(entry -> {
             String name = entry.getId().getPath();
             String vanillaName = name.replaceFirst("^(impure|pure)_", "");
-            withExistingParent(name, "item/generated")
+            String parent = entry.get() instanceof TieredItem ? "item/handheld" : "item/generated";
+            withExistingParent(name, parent)
                     .texture("layer0", ResourceLocation.withDefaultNamespace("item/" + vanillaName));
         });
     }

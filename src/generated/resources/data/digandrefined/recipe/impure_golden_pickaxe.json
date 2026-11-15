@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "M": {
+      "tag": "digandrefined:ingots/gold/impure"
+    }
+  },
+  "pattern": [
+    "MMM",
+    " # ",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "digandrefined:impure_golden_pickaxe"
+  }
+}
