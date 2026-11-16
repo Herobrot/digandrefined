@@ -49,5 +49,22 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.PURE_GOLD_PICKAXE.get())
                 .add(ModItems.IMPURE_DIAMOND_PICKAXE.get())
                 .add(ModItems.PURE_DIAMOND_PICKAXE.get());
+
+        tag(ItemTags.AXES)
+                .add(ModItems.IMPURE_IRON_AXE.get(), ModItems.PURE_IRON_AXE.get())
+                .add(ModItems.IMPURE_GOLDEN_AXE.get(), ModItems.PURE_GOLDEN_AXE.get())
+                .add(ModItems.IMPURE_DIAMOND_AXE.get(), ModItems.PURE_DIAMOND_AXE.get());
+        tag(ItemTags.SHOVELS)
+                .add(ModItems.IMPURE_IRON_SHOVEL.get(), ModItems.PURE_IRON_SHOVEL.get())
+                .add(ModItems.IMPURE_GOLDEN_SHOVEL.get(), ModItems.PURE_GOLDEN_SHOVEL.get())
+                .add(ModItems.IMPURE_DIAMOND_SHOVEL.get(), ModItems.PURE_DIAMOND_SHOVEL.get());
+        tag(ItemTags.HOES)
+                .add(ModItems.IMPURE_IRON_HOE.get(), ModItems.PURE_IRON_HOE.get())
+                .add(ModItems.IMPURE_GOLDEN_HOE.get(), ModItems.PURE_GOLDEN_HOE.get())
+                .add(ModItems.IMPURE_DIAMOND_HOE.get(), ModItems.PURE_DIAMOND_HOE.get());
+        tag(ItemTags.SWORDS)
+                .add(ModItems.IMPURE_IRON_SWORD.get(), ModItems.PURE_IRON_SWORD.get())
+                .add(ModItems.IMPURE_GOLDEN_SWORD.get(), ModItems.PURE_GOLDEN_SWORD.get())
+                .add(ModItems.IMPURE_DIAMOND_SWORD.get(), ModItems.PURE_DIAMOND_SWORD.get());
     }
 }
