@@ -7,12 +7,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
 
 public enum GradedMetal {
-    IRON(Tiers.IRON, "iron", 6.0f, -3.1f, -2.0f, -1.0f, ModTags.IMPURE_IRON_INGOT, ModTags.PURE_IRON_INGOT),
-    GOLD(Tiers.GOLD, "golden", 6.0f, -3.0f, 0.0f, -3.0f, ModTags.IMPURE_GOLD_INGOT, ModTags.PURE_GOLD_INGOT),
-    DIAMOND(Tiers.DIAMOND, "diamond", 5.0f, -3.0f, -3.0f, 0.0f, ModTags.IMPURE_DIAMOND, ModTags.PURE_DIAMOND);
+    IRON(Tiers.IRON, "iron", "hierro", 6.0f, -3.1f, -2.0f, -1.0f, ModTags.IMPURE_IRON_INGOT, ModTags.PURE_IRON_INGOT),
+    GOLD(Tiers.GOLD, "golden", "oro", 6.0f, -3.0f, 0.0f, -3.0f, ModTags.IMPURE_GOLD_INGOT, ModTags.PURE_GOLD_INGOT),
+    DIAMOND(Tiers.DIAMOND, "diamond", "diamante", 5.0f, -3.0f, -3.0f, 0.0f, ModTags.IMPURE_DIAMOND, ModTags.PURE_DIAMOND);
 
     private final Tiers base;
     private final String gearName;
+    private final String spanishName;
     private final float axeDamage;
     private final float axeSpeed;
     private final float hoeDamage;
@@ -20,10 +21,11 @@ public enum GradedMetal {
     private final TagKey<Item> impureTag;
     private final TagKey<Item> pureTag;
 
-    GradedMetal(Tiers base, String gearName, float axeDamage, float axeSpeed, float hoeDamage, float hoeSpeed,
+    GradedMetal(Tiers base, String gearName, String spanishName, float axeDamage, float axeSpeed, float hoeDamage, float hoeSpeed,
                 TagKey<Item> impureTag, TagKey<Item> pureTag) {
         this.base = base;
         this.gearName = gearName;
+        this.spanishName = spanishName;
         this.axeDamage = axeDamage;
         this.axeSpeed = axeSpeed;
         this.hoeDamage = hoeDamage;
@@ -34,8 +36,9 @@ public enum GradedMetal {
 
     public Tiers base() { return base; }
 
-    /** Nombre usado por el equipamiento vanilla: iron, golden, diamond. */
     public String gearName() { return gearName; }
+
+    public String spanishName() { return spanishName; }
 
     public float axeDamage() { return axeDamage; }
 
