@@ -3,6 +3,9 @@ package com.herobrot.digandrefined.datagen;
 import java.util.concurrent.CompletableFuture;
 
 import com.herobrot.digandrefined.DigandRefined;
+import com.herobrot.digandrefined.item.Grade;
+import com.herobrot.digandrefined.item.GradedMetal;
+import com.herobrot.digandrefined.item.ToolSet;
 import com.herobrot.digandrefined.registry.ModItems;
 import com.herobrot.digandrefined.registry.ModTags;
 
@@ -42,29 +45,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModTags.IMPURE_DIAMOND).add(ModItems.IMPURE_DIAMOND.get());
         tag(ModTags.PURE_DIAMOND).add(ModItems.PURE_DIAMOND.get());
 
-        tag(ItemTags.PICKAXES)
-                .add(ModItems.IMPURE_IRON_PICKAXE.get())
-                .add(ModItems.PURE_IRON_PICKAXE.get())
-                .add(ModItems.IMPURE_GOLD_PICKAXE.get())
-                .add(ModItems.PURE_GOLD_PICKAXE.get())
-                .add(ModItems.IMPURE_DIAMOND_PICKAXE.get())
-                .add(ModItems.PURE_DIAMOND_PICKAXE.get());
-
-        tag(ItemTags.AXES)
-                .add(ModItems.IMPURE_IRON_AXE.get(), ModItems.PURE_IRON_AXE.get())
-                .add(ModItems.IMPURE_GOLDEN_AXE.get(), ModItems.PURE_GOLDEN_AXE.get())
-                .add(ModItems.IMPURE_DIAMOND_AXE.get(), ModItems.PURE_DIAMOND_AXE.get());
-        tag(ItemTags.SHOVELS)
-                .add(ModItems.IMPURE_IRON_SHOVEL.get(), ModItems.PURE_IRON_SHOVEL.get())
-                .add(ModItems.IMPURE_GOLDEN_SHOVEL.get(), ModItems.PURE_GOLDEN_SHOVEL.get())
-                .add(ModItems.IMPURE_DIAMOND_SHOVEL.get(), ModItems.PURE_DIAMOND_SHOVEL.get());
-        tag(ItemTags.HOES)
-                .add(ModItems.IMPURE_IRON_HOE.get(), ModItems.PURE_IRON_HOE.get())
-                .add(ModItems.IMPURE_GOLDEN_HOE.get(), ModItems.PURE_GOLDEN_HOE.get())
-                .add(ModItems.IMPURE_DIAMOND_HOE.get(), ModItems.PURE_DIAMOND_HOE.get());
-        tag(ItemTags.SWORDS)
-                .add(ModItems.IMPURE_IRON_SWORD.get(), ModItems.PURE_IRON_SWORD.get())
-                .add(ModItems.IMPURE_GOLDEN_SWORD.get(), ModItems.PURE_GOLDEN_SWORD.get())
-                .add(ModItems.IMPURE_DIAMOND_SWORD.get(), ModItems.PURE_DIAMOND_SWORD.get());
+        for (GradedMetal metal : GradedMetal.values())
+            for (Grade grade : Grade.values()) {
+                ToolSet set = ModItems.tools(metal, grade);
+                tag(ItemTags.PICKAXES).add(set.pickaxe().get());
+                tag(ItemTags.AXES).add(set.axe().get());
+                tag(ItemTags.SHOVELS).add(set.shovel().get());
+                tag(ItemTags.HOES).add(set.hoe().get());
+                tag(ItemTags.SWORDS).add(set.sword().get());
+            }
     }
 }

@@ -3,8 +3,10 @@ package com.herobrot.digandrefined.datagen;
 import java.util.concurrent.CompletableFuture;
 
 import com.herobrot.digandrefined.DigandRefined;
+import com.herobrot.digandrefined.item.Grade;
+import com.herobrot.digandrefined.item.GradedMetal;
+import com.herobrot.digandrefined.item.ToolSet;
 import com.herobrot.digandrefined.registry.ModItems;
-import com.herobrot.digandrefined.registry.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -36,12 +38,9 @@ public class ModRecipeProvider extends RecipeProvider {
         cook(output, ModItems.IMPURE_RAW_GOLD, ModItems.IMPURE_GOLD_INGOT, IMPURE_XP);
         cook(output, ModItems.PURE_RAW_GOLD, ModItems.PURE_GOLD_INGOT, PURE_XP);
 
-        toolSet(output, ModTags.IMPURE_IRON_INGOT, ModItems.IMPURE_IRON_PICKAXE, ModItems.IMPURE_IRON_AXE, ModItems.IMPURE_IRON_SHOVEL, ModItems.IMPURE_IRON_HOE, ModItems.IMPURE_IRON_SWORD);
-        toolSet(output, ModTags.PURE_IRON_INGOT, ModItems.PURE_IRON_PICKAXE, ModItems.PURE_IRON_AXE, ModItems.PURE_IRON_SHOVEL, ModItems.PURE_IRON_HOE, ModItems.PURE_IRON_SWORD);
-        toolSet(output, ModTags.IMPURE_GOLD_INGOT, ModItems.IMPURE_GOLD_PICKAXE, ModItems.IMPURE_GOLDEN_AXE, ModItems.IMPURE_GOLDEN_SHOVEL, ModItems.IMPURE_GOLDEN_HOE, ModItems.IMPURE_GOLDEN_SWORD);
-        toolSet(output, ModTags.PURE_GOLD_INGOT, ModItems.PURE_GOLD_PICKAXE, ModItems.PURE_GOLDEN_AXE, ModItems.PURE_GOLDEN_SHOVEL, ModItems.PURE_GOLDEN_HOE, ModItems.PURE_GOLDEN_SWORD);
-        toolSet(output, ModTags.IMPURE_DIAMOND, ModItems.IMPURE_DIAMOND_PICKAXE, ModItems.IMPURE_DIAMOND_AXE, ModItems.IMPURE_DIAMOND_SHOVEL, ModItems.IMPURE_DIAMOND_HOE, ModItems.IMPURE_DIAMOND_SWORD);
-        toolSet(output, ModTags.PURE_DIAMOND, ModItems.PURE_DIAMOND_PICKAXE, ModItems.PURE_DIAMOND_AXE, ModItems.PURE_DIAMOND_SHOVEL, ModItems.PURE_DIAMOND_HOE, ModItems.PURE_DIAMOND_SWORD);
+        for (GradedMetal metal : GradedMetal.values())
+            for (Grade grade : Grade.values())
+                toolSet(output, metal.repairTag(grade), ModItems.tools(metal, grade));
     }
 
     private void cook(RecipeOutput output, DeferredItem<Item> raw, DeferredItem<Item> ingot, float xp) {
@@ -56,14 +55,12 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(output, ResourceLocation.fromNamespaceAndPath(DigandRefined.MODID, name + "_from_blasting"));
     }
 
-    private void toolSet(RecipeOutput output, TagKey<Item> material, DeferredItem<PickaxeItem> pickaxe,
-                         DeferredItem<AxeItem> axe, DeferredItem<ShovelItem> shovel, DeferredItem<HoeItem> hoe,
-                         DeferredItem<SwordItem> sword) {
-        shaped(output, RecipeCategory.TOOLS, pickaxe, material, "MMM", " # ", " # ");
-        shaped(output, RecipeCategory.TOOLS, axe, material, "MM", "M#", " #");
-        shaped(output, RecipeCategory.TOOLS, shovel, material, "M", "#", "#");
-        shaped(output, RecipeCategory.TOOLS, hoe, material, "MM", " #", " #");
-        shaped(output, RecipeCategory.COMBAT, sword, material, "M", "M", "#");
+    private void toolSet(RecipeOutput output, TagKey<Item> material, ToolSet set) {
+        shaped(output, RecipeCategory.TOOLS, set.pickaxe(), material, "MMM", " # ", " # ");
+        shaped(output, RecipeCategory.TOOLS, set.axe(), material, "MM", "M#", " #");
+        shaped(output, RecipeCategory.TOOLS, set.shovel(), material, "M", "#", "#");
+        shaped(output, RecipeCategory.TOOLS, set.hoe(), material, "MM", " #", " #");
+        shaped(output, RecipeCategory.COMBAT, set.sword(), material, "M", "M", "#");
     }
 
     private void shaped(RecipeOutput output, RecipeCategory category, DeferredItem<?> result,
