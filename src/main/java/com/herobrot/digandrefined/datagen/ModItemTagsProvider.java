@@ -3,6 +3,7 @@ package com.herobrot.digandrefined.datagen;
 import java.util.concurrent.CompletableFuture;
 
 import com.herobrot.digandrefined.DigandRefined;
+import com.herobrot.digandrefined.item.ArmorSet;
 import com.herobrot.digandrefined.item.Grade;
 import com.herobrot.digandrefined.item.GradedMetal;
 import com.herobrot.digandrefined.item.ToolSet;
@@ -53,6 +54,17 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 tag(ItemTags.SHOVELS).add(set.shovel().get());
                 tag(ItemTags.HOES).add(set.hoe().get());
                 tag(ItemTags.SWORDS).add(set.sword().get());
+                ArmorSet armor = ModItems.armor(metal, grade);
+                tag(ItemTags.HEAD_ARMOR).add(armor.helmet().get());
+                tag(ItemTags.CHEST_ARMOR).add(armor.chestplate().get());
+                tag(ItemTags.LEG_ARMOR).add(armor.leggings().get());
+                tag(ItemTags.FOOT_ARMOR).add(armor.boots().get());
+                tag(ItemTags.TRIMMABLE_ARMOR).add(
+                        armor.helmet().get(),
+                        armor.chestplate().get(),
+                        armor.leggings().get(),
+                        armor.boots().get()
+                );
             }
     }
 }

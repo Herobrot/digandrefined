@@ -3,6 +3,7 @@ package com.herobrot.digandrefined.datagen;
 import java.util.concurrent.CompletableFuture;
 
 import com.herobrot.digandrefined.DigandRefined;
+import com.herobrot.digandrefined.item.ArmorSet;
 import com.herobrot.digandrefined.item.Grade;
 import com.herobrot.digandrefined.item.GradedMetal;
 import com.herobrot.digandrefined.item.ToolSet;
@@ -39,8 +40,10 @@ public class ModRecipeProvider extends RecipeProvider {
         cook(output, ModItems.PURE_RAW_GOLD, ModItems.PURE_GOLD_INGOT, PURE_XP);
 
         for (GradedMetal metal : GradedMetal.values())
-            for (Grade grade : Grade.values())
+            for (Grade grade : Grade.values()) {
                 toolSet(output, metal.repairTag(grade), ModItems.tools(metal, grade));
+                armorSet(output, metal.repairTag(grade), ModItems.armor(metal, grade));
+            }
     }
 
     private void cook(RecipeOutput output, DeferredItem<Item> raw, DeferredItem<Item> ingot, float xp) {
@@ -63,11 +66,17 @@ public class ModRecipeProvider extends RecipeProvider {
         shaped(output, RecipeCategory.COMBAT, set.sword(), material, "M", "M", "#");
     }
 
+    private void armorSet(RecipeOutput output, TagKey<Item> material, ArmorSet set) {
+        shaped(output, RecipeCategory.COMBAT, set.helmet(), material, "MMM", "M M");
+        shaped(output, RecipeCategory.COMBAT, set.chestplate(), material, "M M", "MMM", "MMM");
+        shaped(output, RecipeCategory.COMBAT, set.leggings(), material, "MMM", "M M", "M M");
+        shaped(output, RecipeCategory.COMBAT, set.boots(), material, "M M", "M M");
+    }
+
     private void shaped(RecipeOutput output, RecipeCategory category, DeferredItem<?> result,
                         TagKey<Item> material, String... pattern) {
-        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(category, result)
-                .define('M', material)
-                .define('#', Items.STICK);
+        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(category, result).define('M', material);
+        if (String.join("", pattern).contains("#")) builder.define('#', Items.STICK);
         for (String row : pattern) builder.pattern(row);
         builder.unlockedBy("has_material", has(material)).save(output);
     }

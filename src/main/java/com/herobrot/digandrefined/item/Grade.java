@@ -14,6 +14,8 @@ public enum Grade {
         this.spanishStem = spanishStem;
     }
 
+    public int scale(int value) { return Math.max(1, Math.round(value * multiplier)); }
+
     public float multiplier() { return multiplier; }
 
     public String id() { return name().toLowerCase(Locale.ROOT); }

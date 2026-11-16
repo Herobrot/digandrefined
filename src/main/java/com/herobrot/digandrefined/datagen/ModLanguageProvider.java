@@ -3,10 +3,7 @@ package com.herobrot.digandrefined.datagen;
 import java.util.Locale;
 
 import com.herobrot.digandrefined.DigandRefined;
-import com.herobrot.digandrefined.item.GearType;
-import com.herobrot.digandrefined.item.Grade;
-import com.herobrot.digandrefined.item.GradedMetal;
-import com.herobrot.digandrefined.item.ToolSet;
+import com.herobrot.digandrefined.item.*;
 import com.herobrot.digandrefined.registry.ModItems;
 
 import net.minecraft.data.PackOutput;
@@ -67,6 +64,9 @@ public class ModLanguageProvider extends LanguageProvider {
                 ToolSet set = ModItems.tools(metal, grade);
                 for (GearType type : GearType.values())
                     addItem(type.item(set), spanish ? spanishName(type, metal, grade) : englishName(type, metal, grade));
+                ArmorSet armor = ModItems.armor(metal, grade);
+                for (ArmorPiece piece : ArmorPiece.values())
+                    addItem(piece.item(armor), spanish ? spanishName(piece, metal, grade) : englishName(piece, metal, grade));
             }
     }
 
@@ -74,8 +74,16 @@ public class ModLanguageProvider extends LanguageProvider {
         return capitalize(grade.id()) + " " + capitalize(metal.gearName()) + " " + type.englishName();
     }
 
+    private static String englishName(ArmorPiece piece, GradedMetal metal, Grade grade) {
+        return capitalize(grade.id()) + " " + capitalize(metal.gearName()) + " " + piece.englishName();
+    }
+
     private static String spanishName(GearType type, GradedMetal metal, Grade grade) {
         return type.spanishName() + " de " + metal.spanishName() + " " + grade.spanishStem() + type.spanishEnding();
+    }
+
+    private static String spanishName(ArmorPiece piece, GradedMetal metal, Grade grade) {
+        return piece.spanishName() + " de " + metal.spanishName() + " " + grade.spanishStem() + piece.spanishEnding();
     }
 
     private static String capitalize(String text) {

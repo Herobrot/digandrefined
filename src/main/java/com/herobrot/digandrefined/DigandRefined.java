@@ -1,6 +1,7 @@
 package com.herobrot.digandrefined;
 
 import com.herobrot.digandrefined.datagen.DataGenerators;
+import com.herobrot.digandrefined.registry.ModArmorMaterials;
 import com.herobrot.digandrefined.registry.ModCreativeTabs;
 import com.herobrot.digandrefined.registry.ModItems;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ public class DigandRefined {
 
     public DigandRefined(IEventBus modEventBus, ModContainer modContainer) {
         ModItems.ITEMS.register(modEventBus);
+        ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         ModCreativeTabs.TABS.register(modEventBus);
         modEventBus.addListener(DataGenerators::gatherData);
     }

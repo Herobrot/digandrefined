@@ -4,11 +4,12 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import com.herobrot.digandrefined.DigandRefined;
+import com.herobrot.digandrefined.item.ArmorSet;
 import com.herobrot.digandrefined.item.Grade;
 import com.herobrot.digandrefined.item.GradedMetal;
 import com.herobrot.digandrefined.item.GradedTier;
 import com.herobrot.digandrefined.item.ToolSet;
-
+import net.minecraft.core.Holder;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -42,18 +43,25 @@ public class ModItems {
     public static final DeferredItem<Item> IMPURE_DIAMOND = ITEMS.registerSimpleItem("impure_diamond");
     public static final DeferredItem<Item> PURE_DIAMOND = ITEMS.registerSimpleItem("pure_diamond");
 
-    // Herramientas: se registran en este orden (metal, grado, tipo)
     private static final Map<GradedMetal, Map<Grade, ToolSet>> TOOLS = new EnumMap<>(GradedMetal.class);
+    private static final Map<GradedMetal, Map<Grade, ArmorSet>> ARMOR = new EnumMap<>(GradedMetal.class);
 
     static {
         for (GradedMetal metal : GradedMetal.values()) {
-            Map<Grade, ToolSet> byGrade = new EnumMap<>(Grade.class);
-            for (Grade grade : Grade.values()) byGrade.put(grade, createToolSet(metal, grade));
-            TOOLS.put(metal, byGrade);
+            Map<Grade, ToolSet> toolsByGrade = new EnumMap<>(Grade.class);
+            Map<Grade, ArmorSet> armorByGrade = new EnumMap<>(Grade.class);
+            for (Grade grade : Grade.values()) {
+                toolsByGrade.put(grade, createToolSet(metal, grade));
+                armorByGrade.put(grade, createArmorSet(metal, grade));
+            }
+            TOOLS.put(metal, toolsByGrade);
+            ARMOR.put(metal, armorByGrade);
         }
     }
 
     public static ToolSet tools(GradedMetal metal, Grade grade) { return TOOLS.get(metal).get(grade); }
+
+    public static ArmorSet armor(GradedMetal metal, Grade grade) { return ARMOR.get(metal).get(grade); }
 
     private static ToolSet createToolSet(GradedMetal metal, Grade grade) {
         GradedTier tier = new GradedTier(metal.base(), grade, metal.repairTag(grade));
@@ -95,5 +103,21 @@ public class ModItems {
         return ITEMS.registerItem(name, props -> new SwordItem(
                 tier, props.attributes(SwordItem.createAttributes(
                 tier, tier.scaledBaseDamage(3.0f), -2.4f))));
+    }
+
+    private static ArmorSet createArmorSet(GradedMetal metal, Grade grade) {
+        Holder<ArmorMaterial> material = ModArmorMaterials.get(metal, grade);
+        String prefix = grade.id() + "_" + metal.gearName() + "_";
+        return new ArmorSet(
+                armorPiece(prefix + "helmet", material, ArmorItem.Type.HELMET, metal, grade),
+                armorPiece(prefix + "chestplate", material, ArmorItem.Type.CHESTPLATE, metal, grade),
+                armorPiece(prefix + "leggings", material, ArmorItem.Type.LEGGINGS, metal, grade),
+                armorPiece(prefix + "boots", material, ArmorItem.Type.BOOTS, metal, grade));
+    }
+
+    private static DeferredItem<ArmorItem> armorPiece(String name, Holder<ArmorMaterial> material,
+                                                      ArmorItem.Type type, GradedMetal metal, Grade grade) {
+        int durability = grade.scale(type.getDurability(metal.armorDurabilityFactor()));
+        return ITEMS.registerItem(name, props -> new ArmorItem(material, type, props.durability(durability)));
     }
 }

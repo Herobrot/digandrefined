@@ -1,15 +1,17 @@
 package com.herobrot.digandrefined.item;
 
 import com.herobrot.digandrefined.registry.ModTags;
-
+import net.minecraft.core.Holder;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
 
 public enum GradedMetal {
-    IRON(Tiers.IRON, "iron", "hierro", 6.0f, -3.1f, -2.0f, -1.0f, ModTags.IMPURE_IRON_INGOT, ModTags.PURE_IRON_INGOT),
-    GOLD(Tiers.GOLD, "golden", "oro", 6.0f, -3.0f, 0.0f, -3.0f, ModTags.IMPURE_GOLD_INGOT, ModTags.PURE_GOLD_INGOT),
-    DIAMOND(Tiers.DIAMOND, "diamond", "diamante", 5.0f, -3.0f, -3.0f, 0.0f, ModTags.IMPURE_DIAMOND, ModTags.PURE_DIAMOND);
+    IRON(Tiers.IRON, ArmorMaterials.IRON, 15, "iron", "hierro", 6.0f, -3.1f, -2.0f, -1.0f, ModTags.IMPURE_IRON_INGOT, ModTags.PURE_IRON_INGOT),
+    GOLD(Tiers.GOLD, ArmorMaterials.GOLD, 7, "golden", "oro", 6.0f, -3.0f, 0.0f, -3.0f, ModTags.IMPURE_GOLD_INGOT, ModTags.PURE_GOLD_INGOT),
+    DIAMOND(Tiers.DIAMOND, ArmorMaterials.DIAMOND, 33, "diamond", "diamante", 5.0f, -3.0f, -3.0f, 0.0f, ModTags.IMPURE_DIAMOND, ModTags.PURE_DIAMOND);
 
     private final Tiers base;
     private final String gearName;
@@ -18,10 +20,13 @@ public enum GradedMetal {
     private final float axeSpeed;
     private final float hoeDamage;
     private final float hoeSpeed;
+    private final Holder<ArmorMaterial> armorBase;
+    private final int armorDurabilityFactor;
     private final TagKey<Item> impureTag;
     private final TagKey<Item> pureTag;
 
-    GradedMetal(Tiers base, String gearName, String spanishName, float axeDamage, float axeSpeed, float hoeDamage, float hoeSpeed,
+    GradedMetal(Tiers base, Holder<ArmorMaterial> armorBase, int armorDurabilityFactor, String gearName,
+                String spanishName, float axeDamage, float axeSpeed, float hoeDamage, float hoeSpeed,
                 TagKey<Item> impureTag, TagKey<Item> pureTag) {
         this.base = base;
         this.gearName = gearName;
@@ -30,6 +35,8 @@ public enum GradedMetal {
         this.axeSpeed = axeSpeed;
         this.hoeDamage = hoeDamage;
         this.hoeSpeed = hoeSpeed;
+        this.armorBase = armorBase;
+        this.armorDurabilityFactor = armorDurabilityFactor;
         this.impureTag = impureTag;
         this.pureTag = pureTag;
     }
@@ -47,6 +54,10 @@ public enum GradedMetal {
     public float hoeDamage() { return hoeDamage; }
 
     public float hoeSpeed() { return hoeSpeed; }
+
+    public Holder<ArmorMaterial> armorBase() { return armorBase; }
+
+    public int armorDurabilityFactor() { return armorDurabilityFactor; }
 
     public TagKey<Item> repairTag(Grade grade) {
         return grade == Grade.IMPURE ? impureTag : pureTag;
