@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.525,
+  "ingredient": "digandrefined:rough_copper",
+  "result": {
+    "id": "digandrefined:impure_copper_ingot"
+  }
+}

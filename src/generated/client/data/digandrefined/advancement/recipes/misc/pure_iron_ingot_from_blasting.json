@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pure_raw_iron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "digandrefined:pure_raw_iron"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipes": "digandrefined:pure_iron_ingot_from_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pure_raw_iron"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "digandrefined:pure_iron_ingot_from_blasting"
+    ]
+  }
+}

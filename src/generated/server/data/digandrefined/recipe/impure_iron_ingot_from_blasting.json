@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 200,
+  "experience": 0.525,
+  "ingredient": "digandrefined:impure_raw_iron",
+  "result": {
+    "id": "digandrefined:impure_iron_ingot"
+  }
+}

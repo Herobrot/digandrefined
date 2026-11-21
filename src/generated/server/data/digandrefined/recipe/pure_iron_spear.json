@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "M": "#digandrefined:ingots/iron/pure"
+  },
+  "pattern": [
+    "  M",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "id": "digandrefined:pure_iron_spear"
+  }
+}

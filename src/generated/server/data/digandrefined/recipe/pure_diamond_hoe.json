@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "M": "#digandrefined:gems/diamond/pure"
+  },
+  "pattern": [
+    "MM",
+    " #",
+    " #"
+  ],
+  "result": {
+    "id": "digandrefined:pure_diamond_hoe"
+  }
+}

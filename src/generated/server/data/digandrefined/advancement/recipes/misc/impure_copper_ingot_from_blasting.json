@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rough_copper": {
+      "conditions": {
+        "items": [
+          {
+            "items": "digandrefined:rough_copper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipes": "digandrefined:impure_copper_ingot_from_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rough_copper"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "digandrefined:impure_copper_ingot_from_blasting"
+    ]
+  }
+}

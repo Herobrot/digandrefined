@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 1.05,
+  "ingredient": "digandrefined:pure_raw_iron",
+  "result": {
+    "id": "digandrefined:pure_iron_ingot"
+  }
+}

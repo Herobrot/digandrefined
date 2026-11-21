@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "M": "#digandrefined:ingots/iron/impure"
+  },
+  "pattern": [
+    "M",
+    "M",
+    "#"
+  ],
+  "result": {
+    "id": "digandrefined:impure_iron_sword"
+  }
+}

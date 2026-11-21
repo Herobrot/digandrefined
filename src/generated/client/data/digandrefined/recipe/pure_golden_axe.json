@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "M": "#digandrefined:ingots/gold/pure"
+  },
+  "pattern": [
+    "MM",
+    "M#",
+    " #"
+  ],
+  "result": {
+    "id": "digandrefined:pure_golden_axe"
+  }
+}

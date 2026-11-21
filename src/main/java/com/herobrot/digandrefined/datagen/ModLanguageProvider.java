@@ -30,7 +30,7 @@ public class ModLanguageProvider extends LanguageProvider {
             addItem(ModItems.PURE_RAW_IRON, "Hierro en bruto puro");
             addItem(ModItems.IMPURE_IRON_INGOT, "Lingote de hierro impuro");
             addItem(ModItems.PURE_IRON_INGOT, "Lingote de hierro puro");
-            addItem(ModItems.IMPURE_RAW_COPPER, "Cobre en bruto impuro");
+            addItem(ModItems.ROUGH_COPPER, "Cobre bruto");
             addItem(ModItems.PURE_RAW_COPPER, "Cobre en bruto puro");
             addItem(ModItems.IMPURE_COPPER_INGOT, "Lingote de cobre impuro");
             addItem(ModItems.PURE_COPPER_INGOT, "Lingote de cobre puro");
@@ -47,7 +47,7 @@ public class ModLanguageProvider extends LanguageProvider {
             addItem(ModItems.PURE_RAW_IRON, "Pure Raw Iron");
             addItem(ModItems.IMPURE_IRON_INGOT, "Impure Iron Ingot");
             addItem(ModItems.PURE_IRON_INGOT, "Pure Iron Ingot");
-            addItem(ModItems.IMPURE_RAW_COPPER, "Impure Raw Copper");
+            addItem(ModItems.ROUGH_COPPER, "Rough Copper");
             addItem(ModItems.PURE_RAW_COPPER, "Pure Raw Copper");
             addItem(ModItems.IMPURE_COPPER_INGOT, "Impure Copper Ingot");
             addItem(ModItems.PURE_COPPER_INGOT, "Pure Copper Ingot");

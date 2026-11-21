@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.75,
+  "ingredient": "digandrefined:impure_raw_gold",
+  "result": {
+    "id": "digandrefined:impure_gold_ingot"
+  }
+}

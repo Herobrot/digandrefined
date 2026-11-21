@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": "#digandrefined:ingots/iron/pure"
+  },
+  "pattern": [
+    "M M",
+    "M M"
+  ],
+  "result": {
+    "id": "digandrefined:pure_iron_boots"
+  }
+}

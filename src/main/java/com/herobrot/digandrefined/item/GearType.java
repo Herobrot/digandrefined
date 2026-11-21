@@ -10,7 +10,8 @@ public enum GearType {
     AXE("Axe", "Hacha", "a", ToolSet::axe),
     SHOVEL("Shovel", "Pala", "a", ToolSet::shovel),
     HOE("Hoe", "Azada", "a", ToolSet::hoe),
-    SWORD("Sword", "Espada", "a", ToolSet::sword);
+    SWORD("Sword", "Espada", "a", ToolSet::sword),
+    SPEAR("Spear", "Lanza", "a", ToolSet::spear);
 
     private final String englishName;
     private final String spanishName;

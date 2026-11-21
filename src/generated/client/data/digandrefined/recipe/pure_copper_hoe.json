@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "M": "#digandrefined:ingots/copper/pure"
+  },
+  "pattern": [
+    "MM",
+    " #",
+    " #"
+  ],
+  "result": {
+    "id": "digandrefined:pure_copper_hoe"
+  }
+}

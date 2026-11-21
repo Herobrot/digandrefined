@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "M": "#digandrefined:ingots/copper/impure"
+  },
+  "pattern": [
+    "MM",
+    "M#",
+    " #"
+  ],
+  "result": {
+    "id": "digandrefined:impure_copper_axe"
+  }
+}

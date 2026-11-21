@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 200,
+  "experience": 1.5,
+  "ingredient": "digandrefined:pure_raw_gold",
+  "result": {
+    "id": "digandrefined:pure_gold_ingot"
+  }
+}

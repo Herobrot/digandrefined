@@ -1,5 +1,4 @@
 modLoader="javafml"
-loaderVersion="${loader_version_range}"
 license="${mod_license}"
 issueTrackerURL = "https://github.com/Herobrot/digandrefined/issues"
 
@@ -32,6 +31,6 @@ config="${mod_id}.mixins.json"
 [[dependencies."${mod_id}"]]
     modId="cloth_config"
     type="required"
-    versionRange="[15.0,)"
+    versionRange="[26.0,)"
     ordering="AFTER"
     side="BOTH"

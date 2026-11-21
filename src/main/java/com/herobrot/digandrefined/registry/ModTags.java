@@ -3,7 +3,7 @@ package com.herobrot.digandrefined.registry;
 import com.herobrot.digandrefined.DigandRefined;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
@@ -13,7 +13,7 @@ public class ModTags {
     public static final TagKey<Item> IMPURE_IRON_INGOT = tag("ingots/iron/impure");
     public static final TagKey<Item> PURE_IRON_INGOT = tag("ingots/iron/pure");
 
-    public static final TagKey<Item> IMPURE_RAW_COPPER = tag("raw_materials/copper/impure");
+    public static final TagKey<Item> ROUGH_COPPER = tag("raw_materials/copper/impure");
     public static final TagKey<Item> PURE_RAW_COPPER = tag("raw_materials/copper/pure");
     public static final TagKey<Item> IMPURE_COPPER_INGOT = tag("ingots/copper/impure");
     public static final TagKey<Item> PURE_COPPER_INGOT = tag("ingots/copper/pure");
@@ -30,6 +30,6 @@ public class ModTags {
     public static final TagKey<Item> PURE_DIAMOND = tag("gems/diamond/pure");
 
     private static TagKey<Item> tag(String path) {
-        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DigandRefined.MODID, path));
+        return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(DigandRefined.MODID, path));
     }
 }
